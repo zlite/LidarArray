@@ -158,29 +158,32 @@ void loop()
 {
    long time1 = millis();
    Sensor1.startContinuous(100);
-   Sensor1.read();
-   Sensor1.stopContinuous();
-   Sensor2.startContinuous(100);
-   Sensor2.read();
-   Sensor2.stopContinuous();
-   Sensor3.startContinuous(100);
-   Sensor3.read();
-   Sensor3.stopContinuous();
-   Sensor4.startContinuous(100);
-   Sensor4.read();
-   Sensor4.stopContinuous();
-   Sensor5.startContinuous(100);
-   Sensor5.read();
-   Sensor5.stopContinuous();
-   Sensor6.startContinuous(100);
-   Sensor6.read();
-   Sensor6.stopContinuous();
-   Sensor7.startContinuous(100);
-   Sensor7.read();
-   Sensor7.stopContinuous();
    Sensor8.startContinuous(100);
+   Sensor4.startContinuous(100);
+   Sensor1.read();
    Sensor8.read();
+   Sensor4.read();
+   Sensor1.stopContinuous();
    Sensor8.stopContinuous();
+   Sensor4.stopContinuous();
+
+   Sensor2.startContinuous(100);
+   Sensor7.startContinuous(100);
+   Sensor5.startContinuous(100);
+   Sensor2.read();
+   Sensor7.read();
+   Sensor5.read();
+   Sensor2.stopContinuous();
+   Sensor7.stopContinuous();
+   Sensor5.stopContinuous();
+
+
+   Sensor3.startContinuous(100);
+   Sensor6.startContinuous(100);
+   Sensor3.read();
+   Sensor6.read();
+   Sensor3.stopContinuous();
+   Sensor6.stopContinuous();
    long time2 = millis();
    
    
