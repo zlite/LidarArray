@@ -1,3 +1,6 @@
+// Modified code by Chris Anderson
+// Orginal found here: https://forum.arduino.cc/index.php?topic=594762.msg4042641#msg4042641
+
 
 #include <Wire.h>
 #include <VL53L1X.h>
@@ -18,8 +21,8 @@
 #define Sensor4_newAddress 49
 #define Sensor5_newAddress 51
 #define Sensor6_newAddress 53
-#define Sensor6_newAddress 55
-#define Sensor6_newAddress 57
+#define Sensor7_newAddress 55
+#define Sensor8_newAddress 57
 
 VL53L1X Sensor1;
 VL53L1X Sensor2;
@@ -29,6 +32,7 @@ VL53L1X Sensor5;
 VL53L1X Sensor6;
 VL53L1X Sensor7;
 VL53L1X Sensor8;
+
 
 void setup()
 {
@@ -42,10 +46,10 @@ void setup()
   pinMode(XSHUT_pin7, OUTPUT);
   pinMode(XSHUT_pin8, OUTPUT);
  
-  Serial.begin(9600);
+  Serial.begin(115200);
  
   Wire.begin();
-  Wire.setClock(100000);
+  Wire.setClock(400000);
 
 
   pinMode(XSHUT_pin1, INPUT);
@@ -109,7 +113,7 @@ void setup()
     while (1);
   }
   delay(10);
-  Sensor7.setAddress(Sensor6_newAddress);
+  Sensor7.setAddress(Sensor7_newAddress);
 
   pinMode(XSHUT_pin8, INPUT);
      if (!Sensor8.init())
@@ -118,17 +122,16 @@ void setup()
     while (1);
   }
   delay(10);
-  Sensor8.setAddress(Sensor6_newAddress);
-
+  Sensor8.setAddress(Sensor8_newAddress);
  
-  Sensor1.setTimeout(500);
-  Sensor2.setTimeout(500);
-  Sensor3.setTimeout(500);
-  Sensor4.setTimeout(500);
-  Sensor5.setTimeout(500);
-  Sensor6.setTimeout(500);
-  Sensor7.setTimeout(500);
-  Sensor8.setTimeout(500);
+  Sensor1.setTimeout(100);
+  Sensor2.setTimeout(100);
+  Sensor3.setTimeout(100);
+  Sensor4.setTimeout(100);
+  Sensor5.setTimeout(100);
+  Sensor6.setTimeout(100);
+  Sensor7.setTimeout(100);
+  Sensor8.setTimeout(100);
 
 
  
@@ -153,32 +156,31 @@ void setup()
 
 void loop()
 {
-   Sensor1.startContinuous(200);
+   long time1 = millis();
+   Sensor1.startContinuous(100);
    Sensor1.read();
    Sensor1.stopContinuous();
-   long time1 = millis();
-   Sensor2.startContinuous(200);
+   Sensor2.startContinuous(100);
    Sensor2.read();
    Sensor2.stopContinuous();
-   Sensor3.startContinuous(200);
+   Sensor3.startContinuous(100);
    Sensor3.read();
    Sensor3.stopContinuous();
-   Sensor4.startContinuous(200);
+   Sensor4.startContinuous(100);
    Sensor4.read();
    Sensor4.stopContinuous();
-   Sensor5.startContinuous(200);
+   Sensor5.startContinuous(100);
    Sensor5.read();
    Sensor5.stopContinuous();
-   Sensor6.startContinuous(200);
+   Sensor6.startContinuous(100);
    Sensor6.read();
    Sensor6.stopContinuous();
-   Sensor7.startContinuous(200);
+   Sensor7.startContinuous(100);
    Sensor7.read();
    Sensor7.stopContinuous();
-   Sensor8.startContinuous(200);
+   Sensor8.startContinuous(100);
    Sensor8.read();
    Sensor8.stopContinuous();
-
    long time2 = millis();
    
    
@@ -204,7 +206,8 @@ void loop()
   Serial.print(Sensor7.ranging_data.range_mm);
   Serial.println(" ");
   Serial.print("Sensor 8 Range: ");
-  Serial.print(Sensor8.ranging_data.range_mm);
-  Serial.println(" ");
-  Serial.println();
+  Serial.println(Sensor8.ranging_data.range_mm);
+  Serial.print("Time per scan: ");
+  Serial.println(time2-time1);
+  Serial.println("");
 }
