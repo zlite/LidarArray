@@ -155,7 +155,8 @@ void setup()
 }
 
 void loop()
-{
+{    // This is an effort to group sensor pulsing and reads in ways that they don't interfere with each other. So this is two groups of three and one of two, all seperated by at least two sensors. 
+     // I've tried doing the evens and the odds in two batches but it didn't work :-(
    long time1 = millis();
    Sensor1.startContinuous(100);
    Sensor8.startContinuous(100);
