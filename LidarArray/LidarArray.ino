@@ -186,32 +186,43 @@ void loop()
    Sensor3.stopContinuous();
    Sensor6.stopContinuous();
    long time2 = millis();
+
+
+ if (Sensor1.ranging_data.range_mm > 1200) {Sensor1.ranging_data.range_mm = 0;} 
+ if (Sensor2.ranging_data.range_mm > 1200) {Sensor2.ranging_data.range_mm = 0;} 
+ if (Sensor3.ranging_data.range_mm > 1200) {Sensor3.ranging_data.range_mm = 0;} 
+ if (Sensor4.ranging_data.range_mm > 1200) {Sensor4.ranging_data.range_mm = 0;} 
+ if (Sensor5.ranging_data.range_mm > 1200) {Sensor5.ranging_data.range_mm = 0;} 
+ if (Sensor6.ranging_data.range_mm > 1200) {Sensor6.ranging_data.range_mm = 0;} 
+ if (Sensor7.ranging_data.range_mm > 1200) {Sensor7.ranging_data.range_mm = 0;} 
+ if (Sensor8.ranging_data.range_mm > 1200) {Sensor8.ranging_data.range_mm = 0;} 
    
-   
-  Serial.print("Sensor 1 Range: ");
+  Serial.print("Sensor1:");
   Serial.print(Sensor1.ranging_data.range_mm);
-  Serial.println(" ");
-  Serial.print("Sensor 2 Range: ");
+  Serial.print(",");
+  Serial.print("Sensor2:");
   Serial.print(Sensor2.ranging_data.range_mm);
-  Serial.println(" ");
-  Serial.print("Sensor 3 Range: ");
+  Serial.print(",");
+  Serial.print("Sensor3:");
   Serial.print(Sensor3.ranging_data.range_mm);
-  Serial.println(" ");
-  Serial.print("Sensor 4 Range: ");
+  Serial.print(",");
+  Serial.print("Sensor4:");
   Serial.print(Sensor4.ranging_data.range_mm);
-  Serial.println(" ");
-  Serial.print("Sensor 5 Range: ");
+  Serial.print(",");
+  Serial.print("Sensor5:");
   Serial.print(Sensor5.ranging_data.range_mm);
-  Serial.println(" ");
-  Serial.print("Sensor 6 Range: ");
+  Serial.print(",");
+  Serial.print("Sensor6:");
   Serial.print(Sensor6.ranging_data.range_mm);
-  Serial.println(" ");
-  Serial.print("Sensor 7 Range: ");
+  Serial.print(",");
+  Serial.print("Sensor7:");
   Serial.print(Sensor7.ranging_data.range_mm);
-  Serial.println(" ");
-  Serial.print("Sensor 8 Range: ");
+  Serial.print(",");
+  Serial.print("Sensor8:");
   Serial.println(Sensor8.ranging_data.range_mm);
-  Serial.print("Time per scan: ");
-  Serial.println(time2-time1);
-  Serial.println("");
+//  Serial.print("Time per scan: ");
+//  Serial.println(time2-time1);
+//  Serial.print(" ");  
+//  Serial.println("uT");
+  
 }
